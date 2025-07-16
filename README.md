@@ -1,12 +1,59 @@
-# React + Vite
+🩸 Blood Donation Web Application
+A full-stack web application to manage and streamline blood donation, request, and availability services. Built using a React frontend with an Express.js + MongoDB backend. Users can request blood, check availability, or register as a donor.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is structured for clarity and scalability, using modern web development techniques suitable for real-world deployment.
 
-Currently, two official plugins are available:
+Techniques Used
+React Router for client-side routing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Form handling with controlled components and React state.
 
-## Expanding the ESLint configuration
+API communication using Axios to interact with the backend.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Basic form validation and user feedback with conditional rendering.
+
+Backend routing and request handling using Express.js.
+
+Data modeling with Mongoose and MongoDB.
+
+Environment variable management via .env for secure configuration.
+
+Deployment using Vercel (frontend) and Render (backend).
+
+This application includes the following key features:
+
+- ✅ **Home Page**: Overview of the platform and its mission.
+- 👨‍⚕️ **About Page**: Details about the organization or cause behind the project.
+- 🖼️ **Gallery Page**: Displays images from past blood donation events.
+- 📞 **Contact Page**: Allows users to reach out for queries or support.
+- 🔎 **Check Blood Availability**: Users can search for available blood groups.
+- 🩸 **Request Blood**: Users fill a form to request blood; the server processes and matches availability.
+- 💖 **Donate Blood**: Donors can submit their details and register to donate blood.
+
+## 🛠 Tech Stack
+
+| Layer     | Technology                  |
+|-----------|-----------------------------|
+| Frontend  | React.js                    |
+| Backend   | Node.js, Express.js         |
+| Database  | MongoDB (with Mongoose)     |
+
+Libraries & Tools
+React.js
+
+Express.js
+
+MongoDB Atlas (Database hosting)
+
+Axios
+
+Vercel for frontend hosting
+
+Render or Cyclic for backend hosting
+
+Fonts: Poppins via Google Fonts
+
+Live Deployment
+🔗 Frontend: 
+
+🔗 Backend: 
