@@ -8,10 +8,12 @@ import Doner from './Pages/Doner'
 import Request from './Pages/Request'
 import Galleary from './Pages/Galleary'
 import Contact from './Pages/Contact'
+import Top from './Components/Top'
 
 function App() {
   return (
     <>
+      <Top/>
       <Header />
       <Routes>
   <Route path="/" element={<Home />} />
