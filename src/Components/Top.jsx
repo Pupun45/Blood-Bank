@@ -37,12 +37,6 @@ const Top = () => {
             <div className="custom-panel custom-signup">
               <form className="custom-form">
                 <h1 className="custom-heading">Create Account</h1>
-                <div className="custom-socials">
-                  <a href="#" className="custom-icon"><i className="fab fa-facebook-f"></i></a>
-                  <a href="#" className="custom-icon"><i className="fab fa-google-plus-g"></i></a>
-                  <a href="#" className="custom-icon"><i className="fab fa-linkedin-in"></i></a>
-                </div>
-                <span className="custom-note">or use your email for registration</span>
                 <input type="text" className="custom-input" placeholder="Name" />
                 <input type="email" className="custom-input" placeholder="Email" />
                 <input type="password" className="custom-input" placeholder="Password" />
@@ -52,12 +46,6 @@ const Top = () => {
             <div className="custom-panel custom-signin">
               <form className="custom-form">
                 <h1 className="custom-heading">Sign in</h1>
-                <div className="custom-socials">
-                  <a href="#" className="custom-icon"><i className="fab fa-facebook-f"></i></a>
-                  <a href="#" className="custom-icon"><i className="fab fa-google-plus-g"></i></a>
-                  <a href="#" className="custom-icon"><i className="fab fa-linkedin-in"></i></a>
-                </div>
-                <span className="custom-note">or use your account</span>
                 <input type="email" className="custom-input" placeholder="Email" />
                 <input type="password" className="custom-input" placeholder="Password" />
                 <a className="custom-link" href="#">Forgot your password?</a>
@@ -67,16 +55,16 @@ const Top = () => {
             <div className="custom-overlay-container">
               <div className="custom-overlay">
                 <div className="custom-overlay-panel custom-left">
-                  <h1 className="custom-heading">Welcome Back!</h1>
+                  <h1 className="custom-heading">Hello, Friend!</h1>
                   <p className="custom-text">
-                    To keep connected with us please login with your personal info
+                    Enter your personal details and start your journey with us
                   </p>
                   <button className="custom-btn custom-ghost" onClick={() => setIsRightPanelActive(false)}>Login</button>
                 </div>
                 <div className="custom-overlay-panel custom-right">
-                  <h1 className="custom-heading">Hello, Friend!</h1>
+                   <h1 className="custom-heading">Welcome Back!</h1>
                   <p className="custom-text">
-                    Enter your personal details and start your journey with us
+                    To keep connected with us please login with your personal info
                   </p>
                   <button className="custom-btn custom-ghost" onClick={() => {
                     setShowForm(true);
