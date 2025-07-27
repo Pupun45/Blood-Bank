@@ -12,6 +12,11 @@
   border-radius: 20px;
   border: 2px solid #f1f1f1;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /*------------------------------------ Navbar-Top---------------------------------------- */
 .main-navbar {
   background-color: #222;
@@ -310,13 +315,7 @@
   margin: 15px 0;
 }
 
-
 /*------------------------------------ Navbar-------------------------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 .navbar {
   position: sticky;
   top: 0;
