@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
-import '../App.css';
+import React, { useState, useEffect } from "react";
+import "../App.css";
 
 const Top = () => {
   const [showForm, setShowForm] = useState(false);
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
+  const [username, setUsername] = useState("");
+  const [showLogout, setShowLogout] = useState(false);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem("username");
+    if (savedUser) {
+      setUsername(savedUser);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    setUsername("");
+    setShowLogout(false);
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -14,15 +30,78 @@ const Top = () => {
           scrollamount="5"
           style={{ color: "#1aff00ff", fontSize: "18px", flex: 2 }}
         >
-          Donate blood, save lives. A single unit can save three lives. Your small act of kindness can be someone’s second chance. Blood cannot be manufactured; it must come from generous donors. Be the reason someone survives — donate blood today and make a life-changing impact.
+          Donate blood, save lives. A single unit can save three lives. Your
+          small act of kindness can be someone’s second chance. Blood cannot be
+          manufactured; it must come from generous donors. Be the reason someone
+          survives — donate blood today and make a life-changing impact.
         </marquee>
         <ul>
-          <li><a href="#"><i className="fas fa-envelope-open-text"></i> Request</a></li>
-          <li><a href="#"><i className="fas fa-bell" /> Notifications</a></li>
-          <li><button className="btn-signup" onClick={() => setShowForm(true)}>Sign Up</button></li>
+          <li>
+            <a href="#">
+              <i className="fas fa-envelope-open-text"></i> Request
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i className="fas fa-bell" /> Notifications
+            </a>
+          </li>
+          <li style={{ position: "relative" }}>
+            {username ? (
+              <>
+                <div
+                  className="user-icon"
+                  title={username}
+                  onClick={() => setShowLogout(!showLogout)}
+                  style={{
+                    backgroundColor: "#007bff",
+                    color: "#fff",
+                    borderRadius: "50%",
+                    width: "35px",
+                    height: "35px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "bold",
+                    fontSize: "18px",
+                    cursor: "pointer",
+                    userSelect: "none"
+                  }}
+                >
+                  {username[0].toUpperCase()}
+                </div>
+
+                {showLogout && (
+                  <div
+                    className="logout-dropdown"
+                    style={{
+                      position: "absolute",
+                      top: "40px",
+                      right: "0",
+                      backgroundColor: "#fff",
+                      color: "#000",
+                      padding: "10px 15px",
+                      borderRadius: "8px",
+                      boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+                      zIndex: 1000,
+                      cursor: "pointer"
+                    }}
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </div>
+                )}
+              </>
+            ) : (
+              <button className="btn-signup" onClick={() => setShowForm(true)}>
+                Sign Up
+              </button>
+            )}
+          </li>
         </ul>
       </nav>
 
+      {/* Popup Form */}
       {showForm && (
         <div
           className="custom-popup-overlay"
@@ -33,8 +112,12 @@ const Top = () => {
             }
           }}
         >
-          <div className={`custom-wrapper ${isRightPanelActive ? "custom-right-active" : ""}`}>
-            {/* Signup Panel */}
+          <div
+            className={`custom-wrapper ${
+              isRightPanelActive ? "custom-right-active" : ""
+            }`}
+          >
+            {/* Signup */}
             <div className="custom-panel custom-signup">
               <form
                 className="custom-form"
@@ -67,7 +150,7 @@ const Top = () => {
               </form>
             </div>
 
-            {/* Login Panel */}
+            {/* Login */}
             <div className="custom-panel custom-signin">
               <form
                 className="custom-form"
@@ -87,7 +170,12 @@ const Top = () => {
 
                   if (response.ok) {
                     localStorage.setItem("username", result.username);
-                    window.location.href = "/new.html";
+                    setUsername(result.username);
+                    setShowForm(false);
+                    setIsRightPanelActive(false);
+                    setTimeout(() => {
+                      window.location.href = "/Home";
+                    }, 100);
                   }
                 }}
               >
@@ -107,19 +195,25 @@ const Top = () => {
                   <p className="custom-text">
                     Enter your personal details and start your journey with us
                   </p>
-                  <button className="custom-btn custom-ghost" onClick={() => setIsRightPanelActive(false)}>Login</button>
+                  <button className="custom-btn custom-ghost" onClick={() => setIsRightPanelActive(false)}>
+                    Login
+                  </button>
                 </div>
                 <div className="custom-overlay-panel custom-right">
                   <h1 className="custom-heading">Welcome Back!</h1>
                   <p className="custom-text">
                     To keep connected with us please login with your personal info
                   </p>
-                  <button className="custom-btn custom-ghost" onClick={() => setIsRightPanelActive(true)}>Sign Up</button>
+                  <button className="custom-btn custom-ghost" onClick={() => setIsRightPanelActive(true)}>
+                    Sign Up
+                  </button>
                 </div>
               </div>
             </div>
 
-            <button className="custom-btn custom-close" onClick={() => setShowForm(false)}>×</button>
+            <button className="custom-btn custom-close" onClick={() => setShowForm(false)}>
+              ×
+            </button>
           </div>
         </div>
       )}

@@ -18,6 +18,13 @@
   box-sizing: border-box;
 }
 /*------------------------------------ Navbar-Top---------------------------------------- */
+.user-icon:hover {
+  opacity: 0.8;
+}
+
+.logout-dropdown:hover {
+  background-color: #f2f2f2;
+}
 .main-navbar {
   background-color: #222;
   color: white;

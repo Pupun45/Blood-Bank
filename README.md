@@ -54,6 +54,6 @@ Render or Cyclic for backend hosting
 Fonts: Poppins via Google Fonts
 
 Live Deployment
-🔗 Frontend: 
+🔗 Webpage: https://blood-doner-finder.netlify.app/
 
-🔗 Backend: 
+🔗 Code: https://github.com/Pupun45/Blood-Bank
