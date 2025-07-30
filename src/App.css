@@ -896,8 +896,14 @@
     padding: 20px 10px;
   }
 
-  .fon,
+  .fon{
+     padding-top: 43%;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 18px;
+  }
   .fonn {
+    padding-top: 43%;
     padding-left: 0;
     padding-right: 0;
     font-size: 18px;
