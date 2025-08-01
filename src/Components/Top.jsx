@@ -7,9 +7,6 @@ const Top = () => {
   const [username, setUsername] = useState("");
   const [showLogout, setShowLogout] = useState(false);
 
-  // ✅ Replace with your deployed backend URL
-  const BACKEND_URL = "https://your-backend.onrender.com";
-
   useEffect(() => {
     const savedUser = localStorage.getItem("username");
     if (savedUser) {
@@ -116,7 +113,9 @@ const Top = () => {
           }}
         >
           <div
-            className={`custom-wrapper ${isRightPanelActive ? "custom-right-active" : ""}`}
+            className={`custom-wrapper ${
+              isRightPanelActive ? "custom-right-active" : ""
+            }`}
           >
             {/* Signup */}
             <div className="custom-panel custom-signup">
@@ -128,22 +127,18 @@ const Top = () => {
                   const email = e.target.email.value;
                   const password = e.target.password.value;
 
-                  try {
-                    const response = await fetch(`   https://localhost:4000/signup`, {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ username: name, email, password }),
-                    });
+                  const response = await fetch("http://localhost:4000/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username: name, email, password }),
+                  });
 
-                    const result = await response.json();
-                    alert(result.message || "Signup successful");
+                  const result = await response.json();
+                  alert(result.message);
 
-                    if (response.ok) {
-                      e.target.reset();
-                      setIsRightPanelActive(false);
-                    }
-                  } catch (error) {
-                    alert("Signup failed: " + error.message);
+                  if (response.ok) {
+                    e.target.reset();
+                    setIsRightPanelActive(false);
                   }
                 }}
               >
@@ -164,27 +159,23 @@ const Top = () => {
                   const email = e.target.email.value;
                   const password = e.target.password.value;
 
-                  try {
-                    const response = await fetch(`https://localhost:4000/login`, {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ email, password }),
-                    });
+                  const response = await fetch("http://localhost:4000/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                  });
 
-                    const result = await response.json();
-                    alert(result.message || "Login successful");
+                  const result = await response.json();
+                  alert(result.message);
 
-                    if (response.ok) {
-                      localStorage.setItem("username", result.username);
-                      setUsername(result.username);
-                      setShowForm(false);
-                      setIsRightPanelActive(false);
-                      setTimeout(() => {
-                        window.location.href = "/Home";
-                      }, 100);
-                    }
-                  } catch (error) {
-                    alert("Login failed: " + error.message);
+                  if (response.ok) {
+                    localStorage.setItem("username", result.username);
+                    setUsername(result.username);
+                    setShowForm(false);
+                    setIsRightPanelActive(false);
+                    setTimeout(() => {
+                      window.location.href = "/Home";
+                    }, 100);
                   }
                 }}
               >
