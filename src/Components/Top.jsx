@@ -127,7 +127,7 @@ const Top = () => {
                   const email = e.target.email.value;
                   const password = e.target.password.value;
 
-                  const response = await fetch("http://localhost:4000/signup", {
+                  const response = await fetch("https://localhost:4000/signup", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ username: name, email, password }),
@@ -159,7 +159,7 @@ const Top = () => {
                   const email = e.target.email.value;
                   const password = e.target.password.value;
 
-                  const response = await fetch("http://localhost:4000/login", {
+                  const response = await fetch("https://localhost:4000/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password }),
