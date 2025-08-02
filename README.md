@@ -1,3 +1,5 @@
+Developed by - Jyoti Ranjan Behera
+
 🩸 Blood Donation Web Application
 A full-stack web application to manage and streamline blood donation, request, and availability services. Built using a React frontend with an Express.js + MongoDB backend. Users can request blood, check availability, or register as a donor.
 

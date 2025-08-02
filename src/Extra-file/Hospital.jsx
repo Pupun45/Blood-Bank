@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import "../App.css";
-import MED from "../image/AboutS33.jpg";
+import Form from '../Extra-file/Form';
+import City from "../image/City.png";
+import Red from "../image/red.avif";
 
 const hospitalsData = [
   {
     name: "City Hospital",
     phone: "9876543210",
     address: "Main Road, Bhubaneswar",
-    photo: MED,
+    photo: City,
   },
   {
     name: "Red Cross Center",
     phone: "9234567810",
     address: "Sector 2, Cuttack",
-    photo: MED,
+    photo: Red,
   },
   {
     name: "Green Valley Health",
@@ -70,6 +72,8 @@ const cardsPerPage = 8;
 const Hospital = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [showForm, setShowForm] = useState(false);
+  const [selectedHospital, setSelectedHospital] = useState(null);
 
   const filteredHospitals = hospitalsData.filter((h) =>
     h.name.toLowerCase().includes(search.toLowerCase())
@@ -80,8 +84,12 @@ const Hospital = () => {
   const end = start + cardsPerPage;
   const currentHospitals = filteredHospitals.slice(start, end);
 
+  const handleContactClick = (hospital) => {
+    setSelectedHospital(hospital);
+    setShowForm(true);
+  };
+
   return (
-    
     <div className="hospital-wrapper">
       <div className="hospital-search">
         <input
@@ -96,36 +104,52 @@ const Hospital = () => {
         />
       </div>
 
-      <div className="hospital-cards">
-        {currentHospitals.map((hospital, idx) => (
-          <div className="hospital-card" key={idx}>
-            <div className="hospital-card-text">
-              <h3>{hospital.name}</h3>
-              <p>
-                <strong>Phone:</strong> {hospital.phone}
-              </p>
-              <p>
-                <strong>Address:</strong> {hospital.address}
-              </p>
+      {!showForm && (
+        <div className="hospital-cards">
+          {currentHospitals.map((hospital, idx) => (
+            <div className="hospital-card" key={idx}>
+              <div className="hospital-card-text">
+                <h3>{hospital.name}</h3>
+                <p><strong>Phone:</strong> {hospital.phone}</p>
+                <p><strong>Address:</strong> {hospital.address}</p>
+                <button
+                  className="hospital-btn"
+                  onClick={() => handleContactClick(hospital)}
+                >
+                  Contact
+                </button>
+              </div>
+              <div className="hospital-card-image">
+                <img src={hospital.photo} alt={hospital.name} />
+              </div>
             </div>
-            <div className="hospital-card-image">
-              <img src={hospital.photo} alt={hospital.name} />
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
-      <div className="hospital-pagination">
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentPage(i + 1)}
-            className={currentPage === i + 1 ? "pagination-btn active" : "pagination-btn"}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
+      {!showForm && (
+        <div className="hospital-pagination">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i + 1)}
+              className={
+                currentPage === i + 1
+                  ? "pagination-btn active"
+                  : "pagination-btn"
+              }
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {showForm && (
+        <div className="form-container">
+          <Form hospital={selectedHospital} onClose={() => setShowForm(false)} />
+        </div>
+      )}
     </div>
   );
 };
