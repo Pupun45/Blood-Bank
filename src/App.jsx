@@ -9,7 +9,7 @@ import Request from './Pages/Request'
 import Galleary from './Pages/Galleary'
 import Contact from './Pages/Contact'
 import Top from './Components/Top'
-
+import AdminPanel from './Pages/AdminPanel';
 function App() {
   return (
     <>
@@ -24,6 +24,7 @@ function App() {
   <Route path="/Request" element={<Request />} />
   <Route path="/Galleary" element={<Galleary />} />
   <Route path="/Contact" element={<Contact />} />
+  <Route path="/admin" element={<AdminPanel />} /> 
 </Routes>
       <Fotter />
     </>

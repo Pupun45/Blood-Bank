@@ -1,132 +1,154 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
-import Donate from '../image/Donateblood.png'
-import Slider from '../Extra-file/slider'
-import form from '../image/Donate-form.avif'
+import Donate from '../image/Donateblood.png';
+import form from '../image/Donate-form.avif';
+import Slider from '../Extra-file/slider';
+import axios from 'axios';
+
 const Doner = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    adhara: '',
+    email: '',
+    phone: '',
+    bloodGroup: '',
+    unit: '',
+    gender: '',
+    address: '',
+  });
+
+  const [alert, setAlert] = useState({ type: '', message: '' });
+
+  const handleChange = (e) => {
+    const { id, value, name } = e.target;
+    if (name === 'gender') {
+      setFormData({ ...formData, gender: value });
+    } else {
+      setFormData({ ...formData, [id]: value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post("http://localhost:4000/api/submit-donor", formData);
+      setAlert({ type: 'success', message: res.data.message });
+      setFormData({
+        name: '',
+        adhara: '',
+        email: '',
+        phone: '',
+        bloodGroup: '',
+        unit: '',
+        gender: '',
+        address: '',
+      });
+    } catch (err) {
+      setAlert({
+        type: 'danger',
+        message: err.response?.data?.message || "Submission failed",
+      });
+    }
+  };
+
   return (
     <div>
-    <img src={Donate} width={'100%'} height={'400vh'} alt="image" />
+      <img src={Donate} width={'100%'} height={'400vh'} alt="banner" />
 
-    <>
-   <div className="rules">
-        <>
+      <div className="rules">
         <div className="Text-size">
-          <h3 className="hd" data-title="RULES FOR DONATE BLOOD">
-            RULES FOR DONATE BLOOD
-          </h3>
+          <h3 className="hd" data-title="RULES FOR DONATE BLOOD">RULES FOR DONATE BLOOD</h3>
           <div className="sep"></div>
           <div className="sep2"></div>
         </div>
-      </>
-  <table>
-    <thead>
-      <tr>
-        <th>CAN</th>
-        <th>CAN'T</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1.If You are Fit and Healthy</td>
-        <td>1.If you have a cold,Sore throat or Flu</td>
-      </tr>
-      <tr>
-        <td>2.Age 18-70</td>
-        <td>2.If you have Chronic Infrctious Disease</td>
-      </tr>
-      <tr>
-        <td>3.Weight more than 45kgs</td>
-        <td>3.You are taking Antibiotics</td>
-      </tr>
-      <tr>
-        <td>4.If YOu've had no Operation in six months</td>
-        <td>4.If You had recent Surgery</td>
-      </tr>
-      <tr>
-        <td>5.Even if you have Cholesterol</td>
-        <td>5.You are Pregnant Or Breastfeeding</td>
-      </tr>
-      <tr>
-        <td>6.Even if you take blood pressure medication and your pressure is stable</td>
-        <td>6.You've Had an Extended Stay in Certain Countries</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-   <>
-   <div className="Aleart-width">
-       <Alert variant="danger">
-      <Alert.Heading>Important: Blood Donation Eligibility</Alert.Heading>
-      <p>
-      Thank you for considering blood donation! Before you proceed, please review the following eligibility criteria.
-        Your health and the safety of the blood supply are our top priorities.
-      </p>
-      <hr />
-      <p className="mb-0">
-        Please ensure you meet all requirements. If you have any questions, don't hesitate to contact us.
-        We appreciate your willingness to save lives!
-      </p>
-    </Alert>
-</div>
-<div className="donor-container">
-  <div className="registration-wrapper">
-    <div className="form-image">
-      <img src={form} alt="Donation" />
-    </div>
-    <div className="registration-form">
-      <div className="form-body">
-        <div className="form-field-half">
-          <label htmlFor="name">Full Name</label>
-          <input type="text" id="name" placeholder="Enter your name" required />
-        </div>
-        <div className="form-field-half">
-          <label htmlFor="username">Adhara No</label>
-          <input type="number" id="username" placeholder="Enter your Adhara No" required />
-        </div>
-        <div className="form-field-half">
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" placeholder="Enter your email" required />
-        </div>
-        <div className="form-field-half">
-          <label htmlFor="phone">Phone Number</label>
-          <input type="number" id="phone" placeholder="Enter your number" required />
-        </div>
-        <div className="form-field-half">
-          <label htmlFor="pass">Your Blood Group</label>
-          <input type="text" id="pass" placeholder="Enter your Blood group" required />
-        </div>
-        <div className="form-field-half">
-          <label htmlFor="confirmPass">Unit of Blood Need</label>
-          <input type="text" id="confirmPass" placeholder="Type in Mililitter" required />
-        </div>
-        <div className="form-field-full">
-          <label>Gender</label>
-          <div className="gender-options">
-            <label><input type="radio" name="gender" defaultValue="Male" required /> Male</label>
-            <label><input type="radio" name="gender" defaultValue="Female" /> Female</label>
-            <label><input type="radio" name="gender" defaultValue="Other" /> Other</label>
+        <table>
+          <thead>
+            <tr><th>CAN</th><th>CAN'T</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1. If You are Fit and Healthy</td><td>1. If you have a cold, sore throat or flu</td></tr>
+            <tr><td>2. Age 18-70</td><td>2. If you have chronic infectious disease</td></tr>
+            <tr><td>3. Weight more than 45kgs</td><td>3. You are taking antibiotics</td></tr>
+            <tr><td>4. No operation in 6 months</td><td>4. Recent surgery</td></tr>
+            <tr><td>5. Even if you have cholesterol</td><td>5. Pregnant or breastfeeding</td></tr>
+            <tr><td>6. Blood pressure stable</td><td>6. Extended stay in certain countries</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="Aleart-width">
+        <Alert variant="danger">
+          <Alert.Heading>Important: Blood Donation Eligibility</Alert.Heading>
+          <p>
+            Please review the eligibility criteria. Your health and the safety of the blood supply are top priorities.
+          </p>
+          <hr />
+          <p className="mb-0">
+            Contact us with any questions. Thank you for saving lives!
+          </p>
+        </Alert>
+      </div>
+
+      <div className="donor-container">
+        <div className="registration-wrapper">
+          <div className="form-image">
+            <img src={form} alt="Donation" />
+          </div>
+          <div className="registration-form">
+            <form onSubmit={handleSubmit}>
+              <div className="form-body">
+                {alert.message && (
+                  <Alert variant={alert.type}>{alert.message}</Alert>
+                )}
+                <div className="form-field-half">
+                  <label htmlFor="name">Full Name</label>
+                  <input type="text" id="name" value={formData.name} onChange={handleChange} required />
+                </div>
+                <div className="form-field-half">
+                  <label htmlFor="adhara">Adhara No</label>
+                  <input type="number" id="adhara" value={formData.adhara} onChange={handleChange} required />
+                </div>
+                <div className="form-field-half">
+                  <label htmlFor="email">Email</label>
+                  <input type="email" id="email" value={formData.email} onChange={handleChange} required />
+                </div>
+                <div className="form-field-half">
+                  <label htmlFor="phone">Phone Number</label>
+                  <input type="text" id="phone" value={formData.phone} onChange={handleChange} required />
+                </div>
+                <div className="form-field-half">
+                  <label htmlFor="bloodGroup">Blood Group</label>
+                  <input type="text" id="bloodGroup" value={formData.bloodGroup} onChange={handleChange} required />
+                </div>
+                <div className="form-field-half">
+                  <label htmlFor="unit">Unit of Blood Need</label>
+                  <input type="text" id="unit" value={formData.unit} onChange={handleChange} required />
+                </div>
+                <div className="form-field-full">
+                  <label>Gender</label>
+                  <div className="gender-options">
+                    <label><input type="radio" name="gender" value="Male" checked={formData.gender === 'Male'} onChange={handleChange} required /> Male</label>
+                    <label><input type="radio" name="gender" value="Female" checked={formData.gender === 'Female'} onChange={handleChange} /> Female</label>
+                    <label><input type="radio" name="gender" value="Other" checked={formData.gender === 'Other'} onChange={handleChange} /> Other</label>
+                  </div>
+                </div>
+                <div className="form-field-full">
+                  <label htmlFor="address">Address</label>
+                  <textarea id="address" value={formData.address} onChange={handleChange} required />
+                </div>
+                <div className="submit-button-wrapper">
+                  <input type="submit" value="Register" />
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-        <div className="form-field-full">
-          <label htmlFor="address">Address</label>
-          <textarea id="address" placeholder="Enter your full address" required />
-        </div>
-        <div className="submit-button-wrapper">
-          <input type="submit" value="Register" />
-        </div>
       </div>
-    </div>
-  </div>
-</div>
-   </>
-   <>
-    <Slider/>
-   </>
-    </>
-    </div>
-    
-  )
-}
 
-export default Doner
+      <Slider />
+    </div>
+  );
+};
+
+export default Doner;

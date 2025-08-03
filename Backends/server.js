@@ -1,29 +1,39 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const path = require("path");
 
+// Initialize app
 const app = express();
 const port = 4000;
 
+// Middlewares
 app.use(cors());
-// app.use(bodyParser.json());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json()); // parse incoming JSON data
+app.use(express.static(path.join(__dirname, "public"))); // serve static files
 
+// MongoDB Connection
 mongoose.connect("mongodb://127.0.0.1:27017/LOGIN-SIGNUP", {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 })
-.then(async () => {
-  console.log("MongoDB connected")
-})
-.catch(err => console.error("MongoDB connection error:", err));
+.then(() => console.log("✅ MongoDB connected"))
+.catch(err => console.error("❌ MongoDB connection error:", err));
 
+// Import Routes
 const authRoutes = require("./Routers/routes");
-app.use("/", authRoutes);
+const formRoutes = require("./Routers/formRoutes"); // form submission route
 
+
+// Use Routes
+app.use("/", authRoutes);             // login/signup routes
+app.use("/api", formRoutes);          // form submit at: /api/submit-form
+
+const donorRoutes = require("./Routers/donorRoutes");  
+app.use("/api", donorRoutes); // Now /api/submit-donor and /api/all-donors work
+
+
+// Start Server
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`🚀 Server running at http://localhost:${port}`);
 });

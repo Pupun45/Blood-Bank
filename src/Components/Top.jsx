@@ -20,7 +20,7 @@ const Top = () => {
     setShowLogout(false);
     window.location.reload();
   };
-
+  
   return (
     <div>
       <nav className="main-navbar">
