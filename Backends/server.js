@@ -33,6 +33,13 @@ const donorRoutes = require("./Routers/donorRoutes");
 app.use("/api", donorRoutes); // Now /api/submit-donor and /api/all-donors work
 
 
+const requestBloodRoutes = require("./Routers/requestBloodRoutes");
+app.use("/api", requestBloodRoutes); // Now /api/request-blood works
+
+const contactRoutes = require("./Routers/contactRoutes");
+app.use("/api", contactRoutes); // Now /api/contact works
+
+
 // Start Server
 app.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);

@@ -26,7 +26,7 @@ function Form({ hospital, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:4000/api/submit-donor", {
+      const res = await fetch("http://localhost:4000/api/request-blood", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
