@@ -555,10 +555,10 @@
   gap: 2rem;
 }
 .let-s-talk-title {
-  font-size: 2.25rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   line-height: 1.25;
 }
 @media (min-width: 768px) {
@@ -569,12 +569,11 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .let-s-talk-email {
-    font-size: 1.875rem;
+    font-size: 1rem;
   }
 }
 .let-s-talk-email {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1rem;
   color: #ffffff;
 }
 .section-title {
@@ -1303,7 +1302,8 @@
 }
 
 .platelet-image {
-  max-width: 40%;
+  padding-right: 6%;
+  max-width: 30%;
   text-align: center;
 }
 
@@ -1997,7 +1997,9 @@ th {
   /* padding: 1em; */
   margin-top: 1rem;
 }
-
+.thougts{
+  font-size: 1.5rem;
+}
 div.form {
   background-color: #eee;
 }

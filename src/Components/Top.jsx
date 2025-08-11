@@ -6,12 +6,30 @@ const Top = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
   const [username, setUsername] = useState("");
   const [showLogout, setShowLogout] = useState(false);
+  const [notificationCount, setNotificationCount] = useState(0);
 
   useEffect(() => {
     const savedUser = localStorage.getItem("username");
     if (savedUser) {
       setUsername(savedUser);
     }
+
+    // Fetch new form submissions count from backend
+    const fetchNotifications = async () => {
+      try {
+        const res = await fetch("http://localhost:4000/notifications-count");
+        const data = await res.json();
+        setNotificationCount(data.count || 0);
+      } catch (err) {
+        console.error("Error fetching notifications:", err);
+      }
+    };
+
+    fetchNotifications();
+
+    // Optional: refresh notifications every 30 seconds
+    const interval = setInterval(fetchNotifications, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleLogout = () => {
@@ -20,7 +38,7 @@ const Top = () => {
     setShowLogout(false);
     window.location.reload();
   };
-  
+
   return (
     <div>
       <nav className="main-navbar">
@@ -41,9 +59,26 @@ const Top = () => {
               <i className="fas fa-envelope-open-text"></i> Request
             </a>
           </li>
-          <li>
+          <li style={{ position: "relative" }}>
             <a href="#">
               <i className="fas fa-bell" /> Notifications
+              {notificationCount > 0 && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "-5px",
+                    right: "-5px",
+                    backgroundColor: "red",
+                    color: "white",
+                    borderRadius: "50%",
+                    padding: "2px 6px",
+                    fontSize: "12px",
+                    fontWeight: "bold"
+                  }}
+                >
+                  {notificationCount}
+                </span>
+              )}
             </a>
           </li>
           <li style={{ position: "relative" }}>
@@ -139,6 +174,9 @@ const Top = () => {
                   if (response.ok) {
                     e.target.reset();
                     setIsRightPanelActive(false);
+
+                    // Update notifications count
+                    setNotificationCount(prev => prev + 1);
                   }
                 }}
               >

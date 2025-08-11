@@ -22,6 +22,8 @@ const bloodGroups = ["All", "A+", "B+", "B-", "O+", "O-", "AB+", "AB-"];
 const Avalibality = () => {
   const [selectedGroup, setSelectedGroup] = useState("All");
   const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState(sampleData);
+  const [selectedHospital, setSelectedHospital] = useState(null);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -40,6 +42,11 @@ const Avalibality = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleRequestClick = (id) => {
+    setSelectedHospital(id);
+    setIsOpen(true);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,8 +56,17 @@ const Avalibality = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
+      const dataRes = await res.json();
       if (res.ok) {
+        // Reduce hospital units after successful request
+        setData((prevData) =>
+          prevData.map((item) =>
+            item.id === selectedHospital && item.units > 0
+              ? { ...item, units: item.units - 1 }
+              : item
+          )
+        );
+
         alert("Form submitted successfully!");
         setIsOpen(false);
         setFormData({
@@ -64,7 +80,7 @@ const Avalibality = () => {
           address: "",
         });
       } else {
-        alert("Form failed: " + data.message);
+        alert("Form failed: " + dataRes.message);
       }
     } catch (error) {
       console.error("Submit error:", error);
@@ -72,9 +88,10 @@ const Avalibality = () => {
     }
   };
 
-  const filteredData = selectedGroup === "All"
-    ? sampleData
-    : sampleData.filter((item) => item.bloodGroup === selectedGroup);
+  const filteredData =
+    selectedGroup === "All"
+      ? data
+      : data.filter((item) => item.bloodGroup === selectedGroup);
 
   return (
     <>
@@ -121,7 +138,7 @@ const Avalibality = () => {
               <div className="location">📍 {item.location}</div>
               <div className="units">📦 {item.units} unit(s) available</div>
               <div className="updated">🕒 Updated: {item.updated}</div>
-              <button className="open-button" onClick={() => setIsOpen(true)}>
+              <button className="open-button" onClick={() => handleRequestClick(item.id)}>
                 Request
               </button>
             </div>

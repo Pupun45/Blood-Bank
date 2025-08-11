@@ -26,7 +26,7 @@ const Header = () => {
             <span className="dropdown-toggle">Blood</span>
             <ul className="dropdown-menu">
               <li><Link to="/Avalibality">Avalibality of Blood</Link></li>
-              <li><Link to="/Doner">Donate Blood</Link></li>
+              <li><Link to="/Donet">Donate Blood</Link></li>
               <li><Link to="/Request">Request Blood</Link></li>
             </ul>
           </li>

@@ -13,7 +13,7 @@ app.use(express.json()); // parse incoming JSON data
 app.use(express.static(path.join(__dirname, "public"))); // serve static files
 
 // MongoDB Connection
-mongoose.connect("mongodb://127.0.0.1:27017/LOGIN-SIGNUP", {
+mongoose.connect("mongodb://127.0.0.1:27017/Blood-Doner-Finder", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -38,7 +38,6 @@ app.use("/api", requestBloodRoutes); // Now /api/request-blood works
 
 const contactRoutes = require("./Routers/contactRoutes");
 app.use("/api", contactRoutes); // Now /api/contact works
-
 
 // Start Server
 app.listen(port, () => {

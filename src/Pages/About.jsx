@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import bannerImage from "../image/About.jpg";
+import bannerImage from "../image/AboutH.avif";
 import Photo from "../image/About-2nd.png";
 import Box from "../image/AboutS3.webp";
 import Box1 from "../image/AboutS32.png";

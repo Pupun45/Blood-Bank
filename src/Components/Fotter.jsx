@@ -17,16 +17,20 @@ const Fotter = () => {
   <div className="footer">
     <div className="grid-container">
       <div>
-        <h1 className="let-s-talk-title">Let's talk</h1>
-        <p className="let-s-talk-email">bloodcamp45@gmail.com</p>
+        <h1 className="let-s-talk-title">Blood Doner Finder</h1>
+        <p className="let-s-talk-email">Your blood is the gift of life. Every drop you give can save a life, bring hope to a family, and create a healthier world. This World Blood Donor Day, let’s pledge to donate regularly, spread awareness, and inspire others. Because somewhere, someone is alive today… thanks to a donor like you.</p>
       </div>
-      <div className="contact-section">
+      {/* <div className="contact-section">
         <div style={{marginBottom: '2rem'}}>
-          <h2 className="section-title">Contact</h2>
-          <p className="contact-text">Global Enquiries</p>
-          <a href className="contact-link">blood@gmail.com</a>
+          <h2 className="section-title">Links</h2>
+          <a href className="contact-link">Home</a><br />
+          <a href className="contact-link">About</a><br />
+          <a href className="contact-link">Blood</a><br />
+          <a href className="contact-link">Galleary</a><br />
+          <a href className="contact-link">Contact</a><br />
         </div>
-        <div>
+      </div> */}
+       <div>
           <h2 className="section-title">Follow</h2>
           <a href="#" className="follow-link">
             <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
@@ -41,20 +45,11 @@ const Fotter = () => {
             LinkedIn
           </a>
         </div>
-      </div>
       <div className="newsletter-section">
-        <h2 className="section-title">Newsletter</h2>
+        <h2 className="section-title">Help & Support</h2>
         <p className="newsletter-text" style={{marginBottom: '1rem'}}>
-          Lorem ipsum dolor sit amet.
+         "If you face any issues or have feedback about this project, feel free to reach us at: [blooddonation@gmail.com]
         </p>
-        <div className="email-input-wrapper">
-          <input type="email" placeholder="Email address" className="email-input" aria-label="Email address for newsletter" />
-          <button className="newsletter-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="currentColor" className="bi bi-arrow-right arrow-icon" viewBox="0 0 16 16">
-              <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
   </div>

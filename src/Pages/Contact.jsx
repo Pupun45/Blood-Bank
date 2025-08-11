@@ -42,7 +42,7 @@ const Contact = () => {
       <div className="contain">
         <div className="wrapper">
           <div className="form">
-            <h4>GET IN TOUCH</h4>
+            <h4>We’d love to hear from you!</h4>
             <form onSubmit={handleSubmit}>
               <p>
                 <input
@@ -110,13 +110,19 @@ const Contact = () => {
 
           <div className="contacts contact-wrapper">
             <ul>
+              <h1>
+                <p className="thougts">
+                  Whether you have questions, suggestions, or feedback, our team is here to help.
+                  Fill out the form and we’ll get back to you as soon as possible.
+                  Your voice matters — together, we can make a difference.</p>
+              </h1>
               <span className="hightlight-contact-info">
                 <li className="email-info">
-                  <i className="fa fa-envelope" aria-hidden="true" /> contact@gmail.com
+                  <i className="fa fa-envelope" aria-hidden="true" /> blooddonation@gmail.com
                 </li>
                 <li>
                   <i className="fa fa-phone" aria-hidden="true" />{" "}
-                  <span className="highlight-text">+91 00000 00000</span>
+                  <span className="highlight-text">+91 9040682566</span>
                 </li>
               </span>
             </ul>
