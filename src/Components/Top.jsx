@@ -54,12 +54,12 @@ const Top = () => {
           survives — donate blood today and make a life-changing impact.
         </marquee>
         <ul>
-          <li>
+          {/* <li>
             <a href="#">
               <i className="fas fa-envelope-open-text"></i> Request
             </a>
-          </li>
-          <li style={{ position: "relative" }}>
+          </li> */}
+          {/* <li style={{ position: "relative" }}>
             <a href="#">
               <i className="fas fa-bell" /> Notifications
               {notificationCount > 0 && (
@@ -80,7 +80,7 @@ const Top = () => {
                 </span>
               )}
             </a>
-          </li>
+          </li> */}
           <li style={{ position: "relative" }}>
             {username ? (
               <>
