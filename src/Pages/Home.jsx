@@ -21,7 +21,7 @@ import Scroller from "../Extra-file/ScrollButtons";
 const Home = () => {
   return (
     <>
-    <Scroller/>
+      <Scroller />
       <Carousel data-bs-theme="dark">
         <Carousel.Item>
           <img
@@ -56,10 +56,9 @@ const Home = () => {
                 <div className="col-md-4 col-sm-6 xs-padding">
                   <div className="promo-content">
                     <img className="promo-wr" src={Donation} alt="prmo icon" />
-                    <h3>Make Donetion</h3>
+                    <h3>Donate Blood</h3>
                     <p>
-                      Help today because tomorrow you may be the one who needs
-                      helping!
+                      Donating blood saves lives — one unit can help up to three patients in need.
                     </p>
                   </div>
                 </div>
@@ -72,8 +71,7 @@ const Home = () => {
                     />
                     <h3>Fundrising</h3>
                     <p>
-                      Help today because tomorrow you may be the one who needs
-                      helping!
+                      Fundraising helps gather resources to support medical treatments, awareness campaigns, and community welfare projects.
                     </p>
                   </div>
                 </div>
@@ -82,8 +80,7 @@ const Home = () => {
                     <img className="promo-wr" src={Volunteer} alt="prmo icon" />
                     <h3>Become A Volunteer</h3>
                     <p>
-                      Help today because tomorrow you may be the one who needs
-                      helping!
+                      Becoming a volunteer allows you to contribute your time and skills to help those in need and make a positive impact in your community.
                     </p>
                   </div>
                 </div>
@@ -235,10 +232,10 @@ const Home = () => {
           </div>
         </div>
       </>
-         <>
-          <ImageSlider />
-        </>
+      <>
+        <ImageSlider />
       </>
+    </>
   );
 };
 
