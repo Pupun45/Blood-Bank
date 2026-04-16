@@ -1,0 +1,12 @@
+{
+  "name": "blood-bank-root",
+  "private": true,
+  "workspaces": [
+    "Frontend",
+    "Backend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=Frontend",
+    "install-all": "npm install --workspaces"
+  }
+}
