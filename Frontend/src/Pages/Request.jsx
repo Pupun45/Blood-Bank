@@ -7,7 +7,7 @@ const Receiver = () => {
   return (
     <>
       <div className="banner">
-        <img src={request} alt="Blood Donation" />
+        <img src={request} alt="Blood Donation" loading="lazy" />
         <div className="banner-text">
           <h2>Request Blood Now</h2>
           <p>Search hospitals in your area and submit the form.</p>

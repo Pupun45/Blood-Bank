@@ -29,6 +29,7 @@ const Home = () => {
             src={crouse2}
             style={{ height: "80vh", width: "100%" }}
             alt="First slide"
+            loading="lazy"
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -37,6 +38,7 @@ const Home = () => {
             src={crousel}
             style={{ height: "80vh", width: "100%" }}
             alt="Second slide"
+            loading="lazy"
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -45,6 +47,7 @@ const Home = () => {
             src={crouse3}
             style={{ height: "80vh", width: "100%" }}
             alt="Third slide"
+            loading="lazy"
           />
         </Carousel.Item>
       </Carousel>
@@ -134,6 +137,9 @@ const Home = () => {
             loop
             controls
             autoPlay
+            muted
+            playsInline
+            preload="metadata"
           ></video>
         </div>
       </>
@@ -149,23 +155,23 @@ const Home = () => {
       <>
         <div className="card-row">
           <div className="card">
-            <img src={Serivice1} className="card-img" alt="img" />
+            <img src={Serivice1} className="card-img" alt="img" loading="lazy" />
             <h5 className="card-title">Blood Avalibality</h5>
           </div>
           <div className="card">
-            <img src={Serivice2} className="card-img" alt="img" />
+            <img src={Serivice2} className="card-img" alt="img" loading="lazy" />
             <h5 className="card-title">Blood Center Direction</h5>
           </div>
           <div className="card">
-            <img src={Serivice} className="card-img" alt="img" />
+            <img src={Serivice} className="card-img" alt="img" loading="lazy" />
             <h5 className="card-title">Blood Donation Camp</h5>
           </div>
           <div className="card">
-            <img src={Serivice3} height={'195px'} className="card-img" alt="img" />
+            <img src={Serivice3} height={'195px'} className="card-img" alt="img" loading="lazy" />
             <h5 className="card-title">Donor Login</h5>
           </div>
           <div className="card">
-            <img src={Serivice4} height={'195px'} className="card-img" alt="img" />
+            <img src={Serivice4} height={'195px'} className="card-img" alt="img" loading="lazy" />
             <h5 className="card-title">Blood Bank</h5>
           </div>
         </div>
