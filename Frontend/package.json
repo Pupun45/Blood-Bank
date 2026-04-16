@@ -2,6 +2,8 @@
   "name": "blood-camp",
   "private": true,
   "version": "0.0.0",
+  "author": "Jyoti Ranjan Behera",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
