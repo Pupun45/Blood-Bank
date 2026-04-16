@@ -6,7 +6,7 @@
     "Backend"
   ],
   "scripts": {
-    "build": "npm run build --workspace=Frontend",
+    "build": "npm run build --workspace=blood-camp",
     "install-all": "npm install --workspaces"
   }
 }
