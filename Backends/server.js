@@ -2,10 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
+require("dotenv").config();
 
 // Initialize app
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // Middlewares
 app.use(cors());
@@ -13,7 +14,7 @@ app.use(express.json()); // parse incoming JSON data
 app.use(express.static(path.join(__dirname, "public"))); // serve static files
 
 // MongoDB Connection
-mongoose.connect("mongodb://127.0.0.1:27017/Blood-Doner-Finder", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -38,6 +39,11 @@ app.use("/api", requestBloodRoutes); // Now /api/request-blood works
 
 const contactRoutes = require("./Routers/contactRoutes");
 app.use("/api", contactRoutes); // Now /api/contact works
+
+// Notifications endpoint stub
+app.get("/notifications-count", (req, res) => {
+  res.json({ count: 0 });
+});
 
 // Start Server
 app.listen(port, () => {

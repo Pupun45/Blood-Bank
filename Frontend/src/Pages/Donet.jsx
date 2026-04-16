@@ -32,7 +32,7 @@ const Doner = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:4000/api/submit-donor", formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/submit-donor`, formData);
       setAlert({ type: 'success', message: res.data.message });
       setFormData({
         name: '',

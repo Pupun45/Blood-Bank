@@ -6,7 +6,7 @@ const AdminPanel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/all-requests");
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/all-requests`);
         const data = await res.json();
         setFormEntries(data);
       } catch (err) {

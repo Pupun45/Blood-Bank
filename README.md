@@ -1,61 +1,115 @@
-Developed by - Jyoti Ranjan Behera
+# 🩸 Blood Bank Management System
 
-🩸 Blood Donation Web Application
-A full-stack web application to manage and streamline blood donation, request, and availability services. Built using a React frontend with an Express.js + MongoDB backend. Users can request blood, check availability, or register as a donor.
+![Project Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue)
+![Vite](https://img.shields.io/badge/Frontend-Vite-purple)
 
-This project is structured for clarity and scalability, using modern web development techniques suitable for real-world deployment.
+A full-stack web application developed to streamline blood donation, requests, and availability services. This platform acts as a bridge between blood donors and those in crucial need of blood. Built using a **React + Vite** frontend and a robust **Express.js + MongoDB** backend.
 
-Techniques Used
-React Router for client-side routing.
+**Developed by: Jyoti Ranjan Behera**
 
-Form handling with controlled components and React state.
+🔗 **Live Webpage:** [https://blood-doner-finder.netlify.app/](https://blood-doner-finder.netlify.app/)  
+🔗 **Source Code:** [https://github.com/Pupun45/Blood-Bank](https://github.com/Pupun45/Blood-Bank)
 
-API communication using Axios to interact with the backend.
+---
 
-Basic form validation and user feedback with conditional rendering.
+## 🌟 Key Features
 
-Backend routing and request handling using Express.js.
+- ✅ **Home Page**: Overview of the platform, mission, and live notifications.
+- 👨‍⚕️ **About & Gallery**: Details about the organization, past events, and community impact.
+- 🔎 **Real-time Blood Availability**: View current available blood stock across different localized centers.
+- 🩸 **Request Blood**: Users in need can securely submit a blood request form.
+- 💖 **Donate Blood**: Allows volunteers to register as donors in the system seamlessly.
+- 🔐 **User Authentication**: Login/Signup functionality to manage and preserve user sessions.
+- 💬 **Contact Integration**: Custom contact form to engage directly with the platform's support group.
 
-Data modeling with Mongoose and MongoDB.
-
-Environment variable management via .env for secure configuration.
-
-Deployment using Vercel (frontend) and Render (backend).
-
-This application includes the following key features:
-
-- ✅ **Home Page**: Overview of the platform and its mission.
-- 👨‍⚕️ **About Page**: Details about the organization or cause behind the project.
-- 🖼️ **Gallery Page**: Displays images from past blood donation events.
-- 📞 **Contact Page**: Allows users to reach out for queries or support.
-- 🔎 **Check Blood Availability**: Users can search for available blood groups.
-- 🩸 **Request Blood**: Users fill a form to request blood; the server processes and matches availability.
-- 💖 **Donate Blood**: Donors can submit their details and register to donate blood.
+---
 
 ## 🛠 Tech Stack
 
-| Layer     | Technology                  |
-|-----------|-----------------------------|
-| Frontend  | React.js                    |
-| Backend   | Node.js, Express.js         |
-| Database  | MongoDB (with Mongoose)     |
+| Layer     | Technology                  | Description                               |
+|-----------|-----------------------------|-------------------------------------------|
+| **Frontend**  | React 19, Vite, Bootstrap   | Blazing fast client-side application.     |
+| **Backend**   | Node.js, Express.js         | REST API Server & Route Management.       |
+| **Database**  | MongoDB Atlas & Mongoose    | Cloud NoSQL database for secure data.     |
 
-Libraries & Tools
-React.js
+---
 
-Express.js
+## 📂 Project Structure
 
-MongoDB Atlas (Database hosting)
+This project uses a split structure separating the client and server concerns:
 
-Axios
+```text
+Blood-Bank/
+├── Frontend/           # React + Vite Client Application
+│   ├── src/            # Components, Pages, Assets
+│   ├── .env            # Frontend environment variables
+│   └── package.json    # Frontend dependencies and scripts
+│
+└── Backends/           # Express.js Server
+    ├── Controlers/     # Route controllers & logic
+    ├── Models/         # Mongoose User & Form schemas
+    ├── Routers/        # API endpoints definitions
+    ├── .env            # Backend environment variables
+    └── server.js       # Main entry point for the backend
+```
 
-Vercel for frontend hosting
+---
 
-Render or Cyclic for backend hosting
+## 🚀 Setup & Installation Instructions
 
-Fonts: Poppins via Google Fonts
+Follow these instructions to set up the project locally. You will need [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/) installed on your machine.
 
-Live Deployment
-🔗 Webpage: https://blood-doner-finder.netlify.app/
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Pupun45/Blood-Bank.git
+cd Blood-Bank
+```
 
-🔗 Code: https://github.com/Pupun45/Blood-Bank
+### 2. Backend Setup
+Navigate to the `Backends` directory and install the dependencies.
+```bash
+cd Backends
+npm install
+```
+
+Create a `.env` file in the `Backends` directory with the following variables:
+```env
+PORT=4000
+MONGO_URI=mongodb+srv://<your_db_username>:<your_db_password>@cluster1.bcy9igb.mongodb.net/Blood-Bank
+```
+
+Start the backend server:
+```bash
+# Starts the server on http://localhost:4000
+npm start 
+
+# OR for development use nodemon
+nodemon server.js
+```
+
+### 3. Frontend Setup
+Open a new terminal window, navigate to the `Frontend` directory, and install dependencies.
+```bash
+cd Frontend
+npm install
+```
+
+Create a `.env` file in the `Frontend` directory with the following variables so the frontend knows where the backend API lives:
+```env
+VITE_API_BASE_URL=http://localhost:4000
+```
+
+Start the frontend development server:
+```bash
+# Starts the frontend on http://localhost:5173
+npm run dev
+```
+
+---
+
+## 🤝 Contributing
+Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](https://github.com/Pupun45/Blood-Bank/issues) if you want to contribute.
+
+## 📝 License
+This project is open-source and free to use.

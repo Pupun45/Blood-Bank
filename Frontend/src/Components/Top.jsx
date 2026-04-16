@@ -17,7 +17,7 @@ const Top = () => {
     // Fetch new form submissions count from backend
     const fetchNotifications = async () => {
       try {
-        const res = await fetch("http://localhost:4000/notifications-count");
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/notifications-count`);
         const data = await res.json();
         setNotificationCount(data.count || 0);
       } catch (err) {
@@ -162,7 +162,7 @@ const Top = () => {
                   const email = e.target.email.value;
                   const password = e.target.password.value;
 
-                  const response = await fetch("http://localhost:4000/signup", {
+                  const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/signup`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ username: name, email, password }),
@@ -197,7 +197,7 @@ const Top = () => {
                   const email = e.target.email.value;
                   const password = e.target.password.value;
 
-                  const response = await fetch("http://localhost:4000/login", {
+                  const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password }),
